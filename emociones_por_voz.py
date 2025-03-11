@@ -5,7 +5,12 @@ import numpy as np
 import joblib
 
 # Cargar el modelo de detección de emociones (previamente entrenado)
-modelo_emociones = joblib.load("modelo_emociones.pkl")
+
+import os
+if os.path.exists("modelo_emociones.pkl"):
+    modelo_emociones = joblib.load("modelo_emociones.pkl")
+else:
+    modelo_emociones = None
 
 # Función para extraer características de audio
 def extraer_caracteristicas(audio_path):
